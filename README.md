@@ -1,4 +1,4 @@
-# Range-wide Analysis of Monarda fistulosa flower color with iNaturalist data
+# Range-wide analysis of *Monarda fistulosa* flower color with iNaturalist data
 
 We apply the following pipeline:  
 1) GBIF export of all Monarda fistulosa observations in North America  
