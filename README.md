@@ -1,7 +1,7 @@
-# Range-wide analysis of *Monarda fistulosa* flower color with iNaturalist data
+# Range-wide analysis of *Monarda fistulosa* flower color with [iNaturalist](https://www.inaturalist.org/) data
 
 We apply the following pipeline:  
-1) GBIF export of all Monarda fistulosa observations in North America  
+1) [GBIF](https://www.gbif.org/) export of all Monarda fistulosa observations in North America  
 * `raw_data/`  
 2) Download all images associated with these observations  
 * `notebooks_pipeline/1_download_write_images.ipynb`  
@@ -13,10 +13,10 @@ We apply the following pipeline:
 * `gpt_image_filtering.csv`  
 5) Filter out images to only include those containing flowers  
 * `notebooks_pipeline/3_merging_filtering_gpt.ipynb`  
-6) Randomly sample some images to train a segmentation model on Roboflow  
+6) Randomly sample some images to train a segmentation model on [Roboflow](https://roboflow.com/)  
 * `notebooks_pipeline/3_merging_filtering_gpt.ipynb`  
 7) Manually annotate photos on the Roboflow platform and train model to recognize "flower" pixels  
-* Trained model: `https://universe.roboflow.com/patricks-dashboard/monarda_fistulosa_segmentation/model/1`  
+* [Trained model](https://universe.roboflow.com/patricks-dashboard/monarda_fistulosa_segmentation/model/1 “Trained Roboflow Segmentation Model”)  
 * API: `"https://segment.roboflow.com/monarda_fistulosa_segmentation/1?api_key={your_api_key}"`  
 8) Query the trained segmentation model for every image containing flowers  
 * `notebooks_pipeline/4_query_segmentation_model.ipynb`  
