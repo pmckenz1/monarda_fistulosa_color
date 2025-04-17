@@ -41,8 +41,11 @@ Intermediates:
 
 # Figures -- code in notebooks_figures
 
+### Figure 1: Visualizing the segmentation masks.  
 ![Figure 1](figures/figure1.png)  
 
+### Figure 2: Demonstrating extracted flower colors.  
 ![Figure 2](figures/figure2.png)  
 
+### Figure 3: Spatial distribution of extracted colors. *Monarda fistulosa* is darker purple in the western U.S.  
 ![Figure 3](figures/figure3.png)  
