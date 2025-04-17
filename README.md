@@ -31,9 +31,12 @@ identified (in multiple color codes), and latitude and longitude.
 # Primary data files  
 
 * Composite dataframe: `filtered_labeled_data.csv`  
-* Segmentation masks: `segmentation_results.zip`  
-* **To download all images labeled as containing flowers:** `download_image_dataset.ipynb`  
+
+Intermediates:  
 * Raw GBIF export: `raw_data/`  
+* Image idxs containing flowers: `gpt_image_filtering.csv`  
+* Segmentation masks: `segmentation_results.zip`  
+* All color-labeled images (to download): `download_image_dataset.ipynb`  
 
 # Figures -- code in notebooks_figures
 
