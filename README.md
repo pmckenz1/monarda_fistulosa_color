@@ -28,9 +28,14 @@ identified (in multiple color codes), and latitude and longitude.
 * `notebooks_pipeline/5_create_full_dataframe.ipynb`  
 * Composite dataframe: `filtered_labeled_data.csv`  
 
-**To download all images labeled as containing flowers:** `download_image_dataset.ipynb`  
+# Primary data files  
 
-# Figure code in notebooks_figures
+* Composite dataframe: `filtered_labeled_data.csv`  
+* Segmentation masks: `segmentation_results.zip`  
+* **To download all images labeled as containing flowers:** `download_image_dataset.ipynb`  
+* Raw GBIF export: `raw_data/`  
+
+# Figures -- code in notebooks_figures
 
 ![Figure 1](figures/figure1.png)  
 
