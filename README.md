@@ -1,5 +1,7 @@
 # Range-wide analysis of *Monarda fistulosa* flower color with [iNaturalist](https://www.inaturalist.org/) data
 
+[![DOI](https://zenodo.org/badge/967532298.svg)](https://doi.org/10.5281/zenodo.15485462)  
+
 We apply the following pipeline:  
 1) [GBIF](https://www.gbif.org/) export of all Monarda fistulosa observations in North America  
 * Method: GBIF in-browser export tools  
