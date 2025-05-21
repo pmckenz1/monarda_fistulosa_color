@@ -29,7 +29,7 @@ We apply the following pipeline:
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/4_query_segmentation_model.ipynb`  
 * All segmented masks in: `segmentation_results.zip`  
-9) Use the segmentation mask to extract "flower" pixels and apply k-means clustering to
+9) Use the segmentation mask to extract "flower" pixels and apply geometric median to
 identify the dominant color among the extracted pixels.  
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/5_create_full_dataframe.ipynb`  
@@ -37,11 +37,11 @@ identify the dominant color among the extracted pixels.
 identified (in multiple color codes), and latitude and longitude.  
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/5_create_full_dataframe.ipynb`  
-* Composite dataframe: `filtered_labeled_data.csv`  
+* Composite dataframe: `datasets/geo_med.csv`  
 
 # Primary data files  
 
-* Composite dataframe: `filtered_labeled_data.csv`  
+* Composite dataframe: `datasets/geo_med.csv`  
 
 Intermediates:  
 * Raw GBIF export: `raw_data/`  
@@ -51,11 +51,11 @@ Intermediates:
 
 # Figures -- code in notebooks_figures
 
-## Figure 1: Visualizing the segmentation masks.  
-![Figure 1](figures/figure1.png)  
+## Figure 1: Figure pipeline.  
+![Figure 1](figures/figures_current/figure_3.png)  
 
-## Figure 2: Demonstrating extracted flower colors.  
-![Figure 2](figures/figure2.png)  
+## Figure 2: Spatial distribution of Monarda fistulosa color and west vs. east comparison.  
+![Figure 2](figures/figures_current/figure_3.png)  
 
-## Figure 3: Spatial distribution of extracted colors. *Monarda fistulosa* is darker purple in the western U.S.  
-![Figure 3](figures/figure3.png)  
+## Figure 3: Validation figures.  
+![Figure 3](figures/figures_current/figure_3.png)  

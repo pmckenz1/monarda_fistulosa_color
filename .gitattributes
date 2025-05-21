@@ -1,1 +1,2 @@
 figures/figures_current/figure1.ai filter=lfs diff=lfs merge=lfs -text
+figures/figures_current/figure_1.ai filter=lfs diff=lfs merge=lfs -text
