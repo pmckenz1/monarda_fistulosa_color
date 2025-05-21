@@ -52,10 +52,10 @@ Intermediates:
 # Figures -- code in notebooks_figures
 
 ## Figure 1: Figure pipeline.  
-![Figure 1](figures/figures_current/figure_3.png)  
+![Figure 1](figures/figures_current/figure_1.png)  
 
 ## Figure 2: Spatial distribution of Monarda fistulosa color and west vs. east comparison.  
-![Figure 2](figures/figures_current/figure_3.png)  
+![Figure 2](figures/figures_current/figure_2.png)  
 
 ## Figure 3: Validation figures.  
 ![Figure 3](figures/figures_current/figure_3.png)  
