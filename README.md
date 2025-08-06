@@ -2,15 +2,6 @@
 
 [![DOI](https://zenodo.org/badge/967532298.svg)](https://doi.org/10.5281/zenodo.15485462)  
 
-# Primary dataset  
-
-* Composite dataframe: `datasets/geo_med.csv`  
-
-# Raw data
-
-* Raw GBIF export: `raw_data/`  
-
-
 # ACCESS INFORMATION
 
 ## 1. Licenses/restrictions placed on the data or code
@@ -37,30 +28,42 @@ This data repository consist of 1 composite data file, 1 raw data file (GBIF exp
 
 1. `datasets/geo_med.csv`  
 
-The composite dataset created by our floral color phenotyping pipeline. **This is the primary dataset for the study and was used to produce all figures and analysis.**  
-
-Variables:  
+The composite dataset created by our floral color phenotyping pipeline. It contains 20628 rows corresponding to the 20,628 images for which we phenotyped flower color. **This is the primary dataset for the study and was used to produce all downstream figures and analysis.**  
+*Variables:*  
+image_idx: (int) An integer mapping to the index of the corresponding downloaded image (i.e., if images are downloaded according to the pipeline code, they will have integer names such as '1.jpg').  
+hex: (str) The hex-color value representing flower color in the image.  
+rgb: (int, int, int) The rgb-color values representing flower color in the image.  
+hsl: (flt, flt, flt) The hsl-color values representing flower color in the image.  
+lab: (int, int, int) The CIELAB-color values representing flower color in the image.  
+gbifID: (int) The GBIF identifier for the corresponding observation.  
+identifier: (str) The URL path to the image.  
+latitude: (flt) The latitude of the corresponding observation (decimal degrees).  
+longitude: (flt) The longitude of the corresponding observation (decimal degrees).  
 
 2. `raw_data/0002206-250218110819086/`  
 
 The raw data exported from GBIF.  
 
-* occurrence.txt  
+* `occurrence.txt`  
 A table with information pertaining to occurrences of *Monarda fistulosa* from the GBIF export of research-grade iNaturalist observations. Each row corresponds to one iNaturalist observation.  
-* multimedia.txt  
+* `multimedia.txt`  
 A table of multimedia associated with the occurrences found in `occurrence.txt` and the information corresponding to each multimedia item. Note that multiple rows of `multimedia.txt` might correspond to the same row in `occurrence.txt`, e.g. if an observation is accompanied by more than one image.  
 
 *A list of variable names and links to variable descriptions for the raw GBIF export is located in the file `raw_data/0002206-250218110819086/meta.xml`*  
 
-### Intermediates
+### Intermediate data files
 
-* Script to download all color-labeled images (output of **Step 2**): `download_image_dataset.ipynb`  
-* Image idxs containing flowers (output of **Step 4**): `gpt_image_filtering.csv`  
-* Segmentation masks (output of **Step 8**): `segmentation_results.zip`  
+* Script to download all color-labeled images (output of **Pipeline Step 2**): `download_image_dataset.ipynb`  
+* Image idxs containing flowers (output of **Pipeline Step 4**): `gpt_image_filtering.csv`  
+* Segmentation masks (output of **Pipeline Step 8**): `segmentation_results.zip`  
 
 ## Code
 
-### Pipeline
+The code is broken into two main directories: `notebooks_pipeline` and `notebooks_figures`.
+* `notebooks_pipeline` contains notebooks documenting the steps we took to create our full dataset, including downloading images, filtering them with GPT, and phenotyping flower color.
+* `notebooks_figures` contains code to reproduce figures and analyses for the manuscript. Everything in this directory is simply analysis of the data produced previously by `notebooks_pipeline`.
+
+### `notebooks_pipeline`
 
 We apply the following pipeline to assemble the composite dataset:  
 1) [GBIF](https://www.gbif.org/) export of all Monarda fistulosa observations in North America  
@@ -104,8 +107,49 @@ identified (in multiple color codes), and latitude and longitude.
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/6_inspect_color_distribution.ipynb`
 
-### Figures
+### `notebooks_figures`
 
+* `figure_1.ipynb`  
+Figure 1 is conceptual; in this notebook we simply query the locations for each photo used in the demonstration so we can place the points accurately on the map in Figure 1D.  
+
+* figure_2a.ipynb`  
+Contains code for reproducing the map in Figure 2A.
+
+* figure_2b.ipynb`  
+Contains code for reproducing the box-and-whisker plots comparing east vs. west in Figure 2B, as well as applying Hotelling's statistics to east vs. west.
+
+* `figure_3a.ipynb`  
+Contains code for reproducing the 3D histogram in LCh space shown in Figure 3A.
+
+* `figure_3b.ipynb`  
+Contains code for reproducing the 2D-project of hue vs. chroma in Figure 3B, as well as sampling and examining specific outlier points.
+
+* `figure_3c.ipynb`  
+Contains code for reproducing the sliding Hotelling's statistic test and producing its plot in Figure 3C.
+
+* `figure_3cd.ipynb`  
+Contains code for reproducing the basemap used in Figure 3C and Figure 3D.
+
+* `figure_3d.ipynb`  
+Contains code for reproducing the k-means clustering sliding analysis shown in Figure 3D.
+
+* `figure_3ef.ipynb`  
+Contains code for reproducing the validation analysis and figures shown in Figure 3E and Figure 3F, as well as for reproducing the statistical testing (MANOVA and ANOVAs).
+
+* `figure_s1.ipynb`  
+Contains code for reproducing the map of individual observations shown in Figure S1.
+
+* `figure_s2.ipynb`  
+Contains code for reproducing the CIELAB color comparisons shown in Figure S2.
+
+* `figure_s3.ipynb`  
+Contains code for reproducing the fully rotated 3D color histogram shown in Figure S3.
+
+* `figure_s4.ipynb`  
+Contains code for reproducing the 2D CIELAB and LCh projections shown in Figure S4.
+
+* `figure_s5.ipynb`  
+Contains code for reproducing the map k-means clustering assignment for individual observations shown in Figure S5.
 
 
 # SOFTWARE VERSIONS
