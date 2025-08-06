@@ -55,9 +55,10 @@ A table of multimedia associated with the occurrences found in `occurrence.txt` 
 
 ### Intermediate data files
 
-* Script to download all color-labeled images (output of **Pipeline Step 2**): `download_image_dataset.ipynb`  
-* Image idxs containing flowers (output of **Pipeline Step 4**): `gpt_image_filtering.csv`  
-* Segmentation masks (output of **Pipeline Step 8**): `segmentation_results.zip`  
+Files produced internally within the pipeline have been stored in `intermediate_data_files`:  
+* `gpt_raw_labeling`: Folder containing the 41069 submissions to the GPT API, and the responses. Each json file contains a set of queries, and each corresponding .csv file contains a set of answers: `YES` or `NO` in the single column `flower_present` (output of **Pipeline Step 4**).  
+* `gpt_image_filtering.csv`: Image idxs containing flowers (output of **Pipeline Step 4**).  
+* `segmentation_results.zip`:  Segmentation masks (output of **Pipeline Step 8**).  
 
 ## Code
 
@@ -83,7 +84,7 @@ We apply the following pipeline to assemble the composite dataset:
 4) Merge the GPT outputs to make a dataframe mapping images to "YES" or "NO" to whether they contain a flower  
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/3_merging_filtering_gpt.ipynb`  
-* Data file: `intermediates/gpt_image_filtering.csv`  
+* Data file: `intermediate_data_files/gpt_image_filtering.csv`  
 5) Using csv with GPT labels, filter out images to only include those containing flowers  
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/3_merging_filtering_gpt.ipynb`  
@@ -97,7 +98,7 @@ We apply the following pipeline to assemble the composite dataset:
 8) Query the trained segmentation model for every image containing flowers  
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/4_query_segmentation_model.ipynb`  
-* All segmented masks in: `intermediates/segmentation_results.zip`  
+* All segmented masks in: `intermediate_data_files/segmentation_results.zip`  
 9) Use the segmentation mask to extract "flower" pixels and apply geometric median to
 identify the dominant color among the extracted pixels.  
 * Method: jupyter notebook (python)  
