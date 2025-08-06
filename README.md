@@ -27,7 +27,7 @@ This data repository consist of 1 composite data file, 1 raw data file (GBIF exp
 
 ## Data files and variables
 
-1. `datasets/geo_med.csv`  
+### Final dataset: `datasets/geo_med.csv`  
 
 The composite dataset created by our floral color phenotyping pipeline. It contains 20628 rows corresponding to the 20,628 images for which we phenotyped flower color. **This is the primary dataset for the study and was used to produce all downstream figures and analysis.**  
 
@@ -42,9 +42,9 @@ The composite dataset created by our floral color phenotyping pipeline. It conta
 `latitude`: (flt) The latitude of the corresponding observation (decimal degrees).  
 `longitude`: (flt) The longitude of the corresponding observation (decimal degrees).  
 
-2. `raw_data/0002206-250218110819086/`  
+### Raw data (GBIF export): `raw_data/0002206-250218110819086/`  
 
-The raw data exported from GBIF.  
+The raw data exported from GBIF. Contains all iNaturalist research-grade observations of *Monarda fistulosa*.
 
 * `occurrence.txt`  
 A table with information pertaining to occurrences of *Monarda fistulosa* from the GBIF export of research-grade iNaturalist observations. Each row corresponds to one iNaturalist observation.  
