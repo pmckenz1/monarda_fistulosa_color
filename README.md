@@ -13,6 +13,7 @@ See the [license desciption](https://github.com/pmckenz1/monarda_fistulosa_color
 ## 2. Data derived from other sources
 
 GBIF export, 19 February 2025: https://doi.org/10.15468/dl.v64sz8  
+*Full list of contributors to the final dataset contained in `observers.txt`*
 
 ## 3. Recommended citation for this archive
 
@@ -29,16 +30,17 @@ This data repository consist of 1 composite data file, 1 raw data file (GBIF exp
 1. `datasets/geo_med.csv`  
 
 The composite dataset created by our floral color phenotyping pipeline. It contains 20628 rows corresponding to the 20,628 images for which we phenotyped flower color. **This is the primary dataset for the study and was used to produce all downstream figures and analysis.**  
-*Variables:*  
-image_idx: (int) An integer mapping to the index of the corresponding downloaded image (i.e., if images are downloaded according to the pipeline code, they will have integer names such as '1.jpg').  
-hex: (str) The hex-color value representing flower color in the image.  
-rgb: (int, int, int) The rgb-color values representing flower color in the image.  
-hsl: (flt, flt, flt) The hsl-color values representing flower color in the image.  
-lab: (int, int, int) The CIELAB-color values representing flower color in the image.  
-gbifID: (int) The GBIF identifier for the corresponding observation.  
-identifier: (str) The URL path to the image.  
-latitude: (flt) The latitude of the corresponding observation (decimal degrees).  
-longitude: (flt) The longitude of the corresponding observation (decimal degrees).  
+
+#### Variables:
+`image_idx`: (int) An integer mapping to the index of the corresponding downloaded image (i.e., if images are downloaded according to the pipeline code, they will have integer names such as '1.jpg').  
+`hex`: (str) The hex-color value representing flower color in the image.  
+`rgb`: (int, int, int) The rgb-color values representing flower color in the image.  
+`hsl`: (flt, flt, flt) The hsl-color values representing flower color in the image.  
+`lab`: (int, int, int) The CIELAB-color values representing flower color in the image.  
+`gbifID`: (int) The GBIF identifier for the corresponding observation.  
+`identifier`: (str) The URL path to the image.  
+`latitude`: (flt) The latitude of the corresponding observation (decimal degrees).  
+`longitude`: (flt) The longitude of the corresponding observation (decimal degrees).  
 
 2. `raw_data/0002206-250218110819086/`  
 
@@ -59,9 +61,11 @@ A table of multimedia associated with the occurrences found in `occurrence.txt` 
 
 ## Code
 
-The code is broken into two main directories: `notebooks_pipeline` and `notebooks_figures`.
-* `notebooks_pipeline` contains notebooks documenting the steps we took to create our full dataset, including downloading images, filtering them with GPT, and phenotyping flower color.
-* `notebooks_figures` contains code to reproduce figures and analyses for the manuscript. Everything in this directory is simply analysis of the data produced previously by `notebooks_pipeline`.
+The code is broken into four main directories:  
+* `notebooks_pipeline` contains notebooks documenting the steps we took to create our full dataset, including downloading images, filtering them with GPT, and phenotyping flower color.  
+* `notebooks_figures` contains code to reproduce figures and analyses for the manuscript. Everything in this directory is simply analysis of the data produced previously by `notebooks_pipeline`.  
+* `validation` contains code for producing a subset of 500 images to distribute to co-authors to bin images into lighting categories, and it contains their manually entered labels.  
+* `notebooks_extra` contains extraneous notebooks -- one for producing a full list of data contributors to the final dataset, and one for testing for temporal biases in color from the final dataset.  
 
 ### `notebooks_pipeline`
 
@@ -151,6 +155,60 @@ Contains code for reproducing the 2D CIELAB and LCh projections shown in Figure 
 * `figure_s5.ipynb`  
 Contains code for reproducing the map k-means clustering assignment for individual observations shown in Figure S5.
 
+### `validation`
+
+* `preparing_validation_subsets.ipynb`  
+
+Contains code documenting our method for randomly selecting observations from the east vs. west regions, shuffling them, and organizing them into a .csv file to be distributed to coauthors.
+
+* `validation_subset.csv`  
+
+The .csv file to be distributed to coauthors, as output from `preparing_validation_subsets.ipynb`. Extraneous columns were removed, and additional columns were added to this before distributing (see `validation_subset_empty.csv`).  
+
+#### Variables:  
+`image_idxs`: (int) The corresponding image.  
+`hex_colors`: (str) The phenotyped hex color of the corresponding image.  
+`gbifID`: (int) The GBIF identifier for the corresponding observation.  
+`latitude`: (flt) The latitude of the corresponding observation (decimal degrees).  
+`longitude`: (flt) The longitude of the corresponding observation (decimal degrees).  
+
+
+* `validation_subset_Robin.csv`  
+
+RH's manual binning of the validation subset into lighting categories.  
+
+#### Variables:  
+`image_idxs`: (int) The corresponding image.  
+`lighting`: (cat) Labeled by the validator. Either "s" (sun), "h" (shade), "p" (partial), or "n" (nan).  
+`monarda`: (cat) Labeled by the validator. Either "n" (indicating no Monarda flower present) or empty (indicating Monarda flower present). *Note, all are empty as validators assessed that Monarda flowers were present in all images.*  
+
+* `validation_subset_Sam.csv`  
+
+SHC's manual binning of the validation subset into lighting categories.  
+
+#### Variables:  
+`image_idxs`: (int) The corresponding image.  
+`lighting`: (cat) Labeled by the validator. Either "s" (sun), "h" (shade), "p" (partial), or "n" (nan).  
+`monarda`: (cat) Labeled by the validator. Either "n" (indicating no Monarda flower present) or empty (indicating Monarda flower present). *Note, all are empty as validators assessed that Monarda flowers were present in all images.*  
+
+* `validation_subset_empty.csv`  
+
+The .csv file to be distributed to coauthors, but with additional headings added.  
+
+#### Variables:  
+`image_idxs`: (int) The corresponding image.  
+`lighting`: (cat) To be labeled by the validators. Either "s" (sun), "h" (shade), "p" (partial), or "n" (nan).  
+`monarda`: (cat) To be labeled by the validators. Either "n" (indicating no Monarda flower present) or empty (indicating Monarda flower present). *Note, all are empty as validators assessed that Monarda flowers were present in all images.*  
+
+### `notebooks_extra`
+
+* `generate_observers_list.ipynb`  
+
+Contains code for producing the list of observers to the final dataset.
+
+* `testing_temporal_pattern_east_west.ipynb`  
+
+Contains code for testing temporal bias in color inferred between east and west.
 
 # SOFTWARE VERSIONS
 
