@@ -8,7 +8,7 @@
 
 MIT License  
 Copyright (c) 2025 Patrick McKenzie  
-See the [license desciption](https://github.com/pmckenz1/monarda_fistulosa_color/blob/main/LICENSE) for more information.  
+See the [license description](https://github.com/pmckenz1/monarda_fistulosa_color/blob/main/LICENSE) for more information.  
 
 ## 2. Data derived from other sources
 
