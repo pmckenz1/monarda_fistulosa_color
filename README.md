@@ -2,7 +2,67 @@
 
 [![DOI](https://zenodo.org/badge/967532298.svg)](https://doi.org/10.5281/zenodo.15485462)  
 
-We apply the following pipeline:  
+# Primary dataset  
+
+* Composite dataframe: `datasets/geo_med.csv`  
+
+# Raw data
+
+* Raw GBIF export: `raw_data/`  
+
+
+# ACCESS INFORMATION
+
+## 1. Licenses/restrictions placed on the data or code
+
+MIT License  
+Copyright (c) 2025 Patrick McKenzie  
+See the [license desciption](https://github.com/pmckenz1/monarda_fistulosa_color/blob/main/LICENSE) for more information.  
+
+## 2. Data derived from other sources
+
+GBIF export, 19 February 2025: https://doi.org/10.15468/dl.v64sz8  
+
+## 3. Recommended citation for this archive
+
+High-throughput iNaturalist image analysis reveals flower color divergence in Monarda fistulosa. 
+Patrick F. McKenzie, Samuel H. Church, Robin Hopkins. 
+bioRxiv 2025.05.21.655392; doi: https://doi.org/10.1101/2025.05.21.655392. 
+
+# DATA & CODE FILE OVERVIEW
+
+This data repository consist of 1 composite data file, 1 raw data file (GBIF export), 3 data intermediates, 6 code scripts for creating the composite data file, 14 code scripts for creating figures and running analyses, a directory for a validation analysis (containing 4 data files and 1 code script) and this README document, with the following data and code filenames and variables.
+
+## Data files and variables
+
+1. `datasets/geo_med.csv`  
+
+The composite dataset created by our floral color phenotyping pipeline. **This is the primary dataset for the study and was used to produce all figures and analysis.**  
+
+Variables:  
+
+2. `raw_data/0002206-250218110819086/`  
+
+The raw data exported from GBIF.  
+
+* occurrence.txt  
+A table with information pertaining to occurrences of *Monarda fistulosa* from the GBIF export of research-grade iNaturalist observations. Each row corresponds to one iNaturalist observation.  
+* multimedia.txt  
+A table of multimedia associated with the occurrences found in `occurrence.txt` and the information corresponding to each multimedia item. Note that multiple rows of `multimedia.txt` might correspond to the same row in `occurrence.txt`, e.g. if an observation is accompanied by more than one image.  
+
+*A list of variable names and links to variable descriptions for the raw GBIF export is located in the file `raw_data/0002206-250218110819086/meta.xml`*  
+
+### Intermediates
+
+* Script to download all color-labeled images (output of **Step 2**): `download_image_dataset.ipynb`  
+* Image idxs containing flowers (output of **Step 4**): `gpt_image_filtering.csv`  
+* Segmentation masks (output of **Step 8**): `segmentation_results.zip`  
+
+## Code
+
+### Pipeline
+
+We apply the following pipeline to assemble the composite dataset:  
 1) [GBIF](https://www.gbif.org/) export of all Monarda fistulosa observations in North America  
 * Method: GBIF in-browser export tools  
 * Data file: `raw_data/`  
@@ -16,7 +76,7 @@ We apply the following pipeline:
 4) Merge the GPT outputs to make a dataframe mapping images to "YES" or "NO" to whether they contain a flower  
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/3_merging_filtering_gpt.ipynb`  
-* Data file: `gpt_image_filtering.csv`  
+* Data file: `intermediates/gpt_image_filtering.csv`  
 5) Using csv with GPT labels, filter out images to only include those containing flowers  
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/3_merging_filtering_gpt.ipynb`  
@@ -30,7 +90,7 @@ We apply the following pipeline:
 8) Query the trained segmentation model for every image containing flowers  
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/4_query_segmentation_model.ipynb`  
-* All segmented masks in: `segmentation_results.zip`  
+* All segmented masks in: `intermediates/segmentation_results.zip`  
 9) Use the segmentation mask to extract "flower" pixels and apply geometric median to
 identify the dominant color among the extracted pixels.  
 * Method: jupyter notebook (python)  
@@ -40,24 +100,14 @@ identified (in multiple color codes), and latitude and longitude.
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/5_create_full_dataframe.ipynb`  
 * Composite dataframe: `datasets/geo_med.csv`  
+11) Inspect the extracted colors to confirm that they are in the range of what we expected.  
+* Method: jupyter notebook (python)  
+* `notebooks_pipeline/6_inspect_color_distribution.ipynb`
 
-# Primary data files  
+### Figures
 
-* Composite dataframe: `datasets/geo_med.csv`  
 
-Intermediates:  
-* Raw GBIF export: `raw_data/`  
-* Image idxs containing flowers: `gpt_image_filtering.csv`  
-* Segmentation masks: `segmentation_results.zip`  
-* All color-labeled images (to download): `download_image_dataset.ipynb`  
 
-# Figures -- code in notebooks_figures
+# SOFTWARE VERSIONS
 
-## Figure 1: Figure pipeline.  
-![Figure 1](figures/figures_current/figure_1.png)  
-
-## Figure 2: Spatial distribution of Monarda fistulosa color and west vs. east comparison.  
-![Figure 2](figures/figures_current/figure_2.png)  
-
-## Figure 3: Validation figures.  
-![Figure 3](figures/figures_current/figure_3.png)  
+All software versions are reported in the notebook `software_versions.ipynb`.
