@@ -217,5 +217,5 @@ All software versions are reported in the notebook `software_versions.ipynb`.
 
 # CONTACT
 
-Patrick F. McKenzie
+Patrick F. McKenzie  
 pmckenzie@fas.harvard.edu
