@@ -101,7 +101,7 @@ We apply the following pipeline to assemble the composite dataset:
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/4_query_segmentation_model.ipynb`  
 * All segmented masks in: `intermediate_data_files/segmentation_results.zip`  
-Note: Might take up to a few hours.  
+* Note: Might take up to a few hours.  
 9) Use the segmentation mask to extract "flower" pixels and apply geometric median to
 identify the dominant color among the extracted pixels.  
 * Method: jupyter notebook (python)  
