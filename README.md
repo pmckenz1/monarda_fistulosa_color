@@ -77,12 +77,12 @@ We apply the following pipeline to assemble the composite dataset:
 2) Download all images associated with these observations  
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/1_download_write_images.ipynb`  
-* Note: Might take up to a couple hours.  
+* *Note: Might take up to a few hours.*  
 3) Query chatGPT to filter image dataset to identify which images feature flowers  
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/2_gpt_filtering.ipynb`  
 * Raw batch submission files and GPT output files in `gpt_raw_labeling/`  
-* Note: Might take up to a few hours.  
+* *Note: Might take up to a few hours.*  
 4) Merge the GPT outputs to make a dataframe mapping images to "YES" or "NO" to whether they contain a flower  
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/3_merging_filtering_gpt.ipynb`  
@@ -101,7 +101,7 @@ We apply the following pipeline to assemble the composite dataset:
 * Method: jupyter notebook (python)  
 * `notebooks_pipeline/4_query_segmentation_model.ipynb`  
 * All segmented masks in: `intermediate_data_files/segmentation_results.zip`  
-* Note: Might take up to a few hours.  
+* *Note: Might take up to a few hours.*  
 9) Use the segmentation mask to extract "flower" pixels and apply geometric median to
 identify the dominant color among the extracted pixels.  
 * Method: jupyter notebook (python)  
