@@ -213,4 +213,9 @@ Contains code for testing temporal bias in color inferred between east and west.
 
 # SOFTWARE VERSIONS
 
-All software versions are reported in the notebook `software_versions.ipynb`.
+All software versions are reported in the notebook `software_versions.ipynb`.  
+
+# CONTACT
+
+Patrick F. McKenzie
+pmckenzie@fas.harvard.edu
